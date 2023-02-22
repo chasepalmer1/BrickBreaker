@@ -9,7 +9,7 @@ public class GameFrame extends JFrame {
 		this.setTitle("Brick Breaker");
 		this.setSize(1000, 720);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
 
         //This is changing the background color of the frame, but because the panel is over the frame, you can't see it.
 		this.getContentPane().setBackground(new Color(0, 0, 0));
