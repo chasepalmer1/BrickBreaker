@@ -1,5 +1,8 @@
+package UI;
+
 import javax.swing.JFrame;
 import java.awt.Color;
+import Inputs.*;
 
 public class Frame extends JFrame {
 

@@ -1,8 +1,9 @@
-package src.Inputs;
+package Inputs;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import UI.*;
 
 public class MouseInputs implements MouseListener, MouseMotionListener {
 	

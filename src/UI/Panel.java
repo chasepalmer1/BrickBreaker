@@ -1,7 +1,10 @@
+package UI;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.util.*;
+import Inputs.*;
 
 import javax.swing.JPanel;
 

@@ -1,8 +1,10 @@
-package src.Inputs;
+package Inputs;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import UI.*;
+
 
 public class KeyboardInputs implements KeyListener {
 	

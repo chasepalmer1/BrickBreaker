@@ -47,9 +47,9 @@ public class GamePanel extends JPanel {
 		//This "cleans" the surface, making painting our own objects smoother.
 		super.paintComponent(g);
 		
-		//the xPos is the x coordinate on the panel, the yPos the y coordinate on the panel.
+		//xPos is the x coordinate on the panel, yPos is the y coordinate on the panel.
 		//200 is the width, and 50 is the height.
-		g.fillRect(xPos, yPos, 200, 50);
+		g.fillRect(xPos, yPos, 150, 30);
 	}
 
 }
