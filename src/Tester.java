@@ -1,5 +1,7 @@
-import UI.*;
-import Inputs.*;
+import UI.Frame;
+import UI.Panel;
+import Objects.*;
+import java.awt.Graphics;
 
 public class Tester {
 

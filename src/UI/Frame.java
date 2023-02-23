@@ -2,7 +2,8 @@ package UI;
 
 import javax.swing.JFrame;
 import java.awt.Color;
-import Inputs.*;
+import Inputs.KeyboardInputs;
+import Inputs.MouseInputs;
 
 public class Frame extends JFrame {
 

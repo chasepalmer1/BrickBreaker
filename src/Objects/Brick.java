@@ -24,9 +24,4 @@ public class Brick extends Rectangle {
         return brickColumn;
     }
 
-    public void draw(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect(x,y,width,height);
-    }
-
 } // Brick
