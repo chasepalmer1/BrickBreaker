@@ -4,13 +4,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import UI.*;
+import Objects.Paddle;
 
 public class MouseInputs implements MouseListener, MouseMotionListener {
 	
 	private Panel gamePanel;
+	private Paddle paddle;
 	
-	public MouseInputs(Panel gamePanel) {
+	public MouseInputs(Panel gamePanel, Paddle paddle) {
 		this.gamePanel = gamePanel;
+		this.paddle = paddle;
 	}
 
 	@Override
@@ -45,13 +48,13 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		gamePanel.setXPosition(e.getX());
+		paddle.setXPosition(e.getX());
 		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		gamePanel.setXPosition(e.getX());
+		paddle.setXPosition(e.getX());
 		
 	}
 	
