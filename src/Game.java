@@ -57,6 +57,7 @@ public class Game implements Runnable {
 				lastFrame = now;
 				frames++;
 			}
+
 		}
 		
 	}

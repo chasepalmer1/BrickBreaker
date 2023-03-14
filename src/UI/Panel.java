@@ -10,6 +10,8 @@ import Inputs.KeyboardInputs;
 import Inputs.MouseInputs;
 
 public class Panel extends JPanel {
+
+	public int score = 0;
 	
 	BrickArray brickArray1 = new BrickArray();
 	private Paddle paddle = new Paddle();
@@ -19,6 +21,14 @@ public class Panel extends JPanel {
 		addMouseListener(new MouseInputs(this, paddle));
 		addMouseMotionListener(new MouseInputs(this, paddle));
 		setBackground(Color.BLACK);
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -35,7 +45,7 @@ public class Panel extends JPanel {
 
 		g.setColor(Color.WHITE);
 		g.setFont(new Font ("Monospaced Bold",1,20));
-		g.drawString("Score: 0", 20, 20);
+		g.drawString("Score: " + score, 20, 20);
 
 	}
 
