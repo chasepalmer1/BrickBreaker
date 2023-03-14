@@ -14,7 +14,7 @@ public class BrickArray {
     public BrickArray() {
 		for (int i = 0; i < brickArray.length; i++) {
             int brickX = 20;
-		    int brickY = 10 + (36 * i);
+		    int brickY = 30 + (36 * i);
 			    for (int j = 0; j < brickArray[i].length; j++) {
 				    brickArray[i][j] = new Brick(brickX, brickY, 95, 35, i, j);
                     brickX += 96;

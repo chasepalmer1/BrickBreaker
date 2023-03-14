@@ -3,6 +3,8 @@ package UI;
 import java.awt.*;
 import java.util.*;
 import Objects.*;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Inputs.KeyboardInputs;
 import Inputs.MouseInputs;
@@ -27,6 +29,14 @@ public class Panel extends JPanel {
 		paddle.spawn(g);
 
 		brickArray1.spawnBricks(g);
+
+		g.setColor(Color.BLUE);
+		g.fillOval(500, 360, 20, 20);
+
+		g.setColor(Color.WHITE);
+		g.setFont(new Font ("Monospaced Bold",1,20));
+		g.drawString("Score: 0", 20, 20);
+
 	}
 
 }
