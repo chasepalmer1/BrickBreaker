@@ -11,15 +11,13 @@ import Inputs.MouseInputs;
 
 public class Panel extends JPanel {
 
-	public int score = 0;
+	private int score = 0;
 	
 	BrickArray brickArray1 = new BrickArray();
 	private Paddle paddle = new Paddle();
 	
 	public Panel() {
 		addKeyListener(new KeyboardInputs(this, paddle));
-		addMouseListener(new MouseInputs(this, paddle));
-		addMouseMotionListener(new MouseInputs(this, paddle));
 		setBackground(Color.BLACK);
 	}
 
