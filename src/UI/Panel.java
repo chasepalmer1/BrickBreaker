@@ -17,10 +17,14 @@ public class Panel extends JPanel {
 	private Paddle paddle = new Paddle();
 	
 	public Panel() {
-		addKeyListener(new KeyboardInputs(this, paddle));
+		addKeyListener(new KeyboardInputs(this));
 		addMouseListener(new MouseInputs(this, paddle));
 		addMouseMotionListener(new MouseInputs(this, paddle));
 		setBackground(Color.BLACK);
+	}
+
+	public void paddleKeyboard(int x) {
+		paddle.keyInputSetXPos(x);
 	}
 
 	public int getScore() {
@@ -30,13 +34,17 @@ public class Panel extends JPanel {
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	public void update() {
+		
+	}
 	
 	public void paintComponent(Graphics g) {
 		//This "cleans" the surface, making painting our own objects smoother.
 		super.paintComponent(g);
 		
 		g.setColor(Color.gray);
-		paddle.spawn(g);
+		paddle.draw(g);
 
 		brickArray1.spawnBricks(g);
 
@@ -46,7 +54,6 @@ public class Panel extends JPanel {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font ("Monospaced Bold",1,20));
 		g.drawString("Score: " + score, 20, 20);
-
 	}
 
 }

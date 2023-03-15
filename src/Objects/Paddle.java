@@ -20,7 +20,7 @@ public class Paddle extends Rectangle {
 		height = 30;
 	}
 	
-	public void spawn(Graphics g) {
+	public void draw(Graphics g) {
 		g.setColor(myGray);
 		g.fillRect(xPos, yPos, width, height);
 	}

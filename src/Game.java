@@ -11,9 +11,11 @@ public class Game implements Runnable {
 
 	//The desired number of frames per second.
 	private final int FPS_SET = 120;
+	private final int UPS_SET = 200;
 
 	//Counting the number of frames.
 	private int frames = 0;
+	private int updates = 0;
 
 	//The time stamp of the last FPS check.
 	private long lastCheck = 0;
@@ -38,7 +40,9 @@ public class Game implements Runnable {
 	public void run() {
 		
 		double timePerFrame = (1_000_000_000.0 / FPS_SET);
+		double timePerUpdate = (1_000_000_000.0 / UPS_SET);
 		long lastFrame = System.nanoTime();
+		long lastUpdate = System.nanoTime();
 		long now = System.nanoTime();
 		
 		while(true) {
@@ -46,8 +50,9 @@ public class Game implements Runnable {
 			
 			if (System.currentTimeMillis() - lastCheck >= 1000) {
 				lastCheck = System.currentTimeMillis();
-				System.out.println("FPS: " + frames);
+				System.out.println("FPS: " + frames + " | UPS: " + updates);
 				frames = 0;
+				updates = 0;
 			}
 			
 			//If the current time minus the last time a frame was painted is greater than the 120 FPS interval we want,
@@ -56,6 +61,13 @@ public class Game implements Runnable {
 				gamePanel.repaint();
 				lastFrame = now;
 				frames++;
+			}
+
+			
+			if((now - lastUpdate) >= timePerUpdate) {
+				gamePanel.update();
+				lastUpdate = now;
+				updates++;
 			}
 
 		}
