@@ -34,8 +34,10 @@ public class BrickArray {
         g.setColor(Color.green);
     	for(int i = 0; i < 5; i++) {
             for(int j = 0; j < 10; j++) {
-            	g.fillRect(brickArray[i][j].x, brickArray[i][j].y, brickArray[i][j].width, 
+                if (brickArray[i][j] != null) {
+            	    g.fillRect(brickArray[i][j].x, brickArray[i][j].y, brickArray[i][j].width, 
             			brickArray[i][j].height);
+                }
             }
     	}
     }
