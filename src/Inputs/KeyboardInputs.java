@@ -24,18 +24,18 @@ public class KeyboardInputs implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_A:
-			gamePanel.paddleKeyboard(-20);
-			break;
-		case KeyEvent.VK_D:
-			gamePanel.paddleKeyboard(20);
-			break;
-		case KeyEvent.VK_RIGHT:
-			gamePanel.paddleKeyboard(20);
-			break;
-		case KeyEvent.VK_LEFT:
-			gamePanel.paddleKeyboard(-20);
-			break;
+			case KeyEvent.VK_RIGHT:
+				gamePanel.getPaddle().setRight(true);
+				break;
+			case KeyEvent.VK_LEFT:
+				gamePanel.getPaddle().setLeft(true);
+				break;
+			case KeyEvent.VK_A:
+				gamePanel.getPaddle().setLeft(true);
+				break;
+			case KeyEvent.VK_D:
+				gamePanel.getPaddle().setRight(true);
+				break;
 		}
 			
 		
@@ -43,8 +43,20 @@ public class KeyboardInputs implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		switch (e.getKeyCode()) {
+			case KeyEvent.VK_RIGHT:
+				gamePanel.getPaddle().setRight(false);
+				break;
+			case KeyEvent.VK_LEFT:
+				gamePanel.getPaddle().setLeft(false);
+				break;
+			case KeyEvent.VK_A:
+				gamePanel.getPaddle().setLeft(false);
+				break;
+			case KeyEvent.VK_D:
+				gamePanel.getPaddle().setRight(false);
+				break;
+		}
 	}
 	
 }

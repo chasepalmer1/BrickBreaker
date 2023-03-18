@@ -23,8 +23,8 @@ public class Panel extends JPanel {
 		setBackground(Color.BLACK);
 	}
 
-	public void paddleKeyboard(int x) {
-		paddle.keyInputSetXPos(x);
+	public Paddle getPaddle() {
+		return this.paddle;
 	}
 
 	public int getScore() {
@@ -36,7 +36,7 @@ public class Panel extends JPanel {
 	}
 
 	public void update() {
-		
+		paddle.updatePos();		
 	}
 	
 	public void paintComponent(Graphics g) {
