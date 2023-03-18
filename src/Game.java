@@ -58,6 +58,8 @@ public class Game implements Runnable {
 				frames++;
 			}
 
+			gamePanel.checkBrickCollision();
+
 		}
 		
 	}

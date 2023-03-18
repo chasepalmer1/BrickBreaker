@@ -22,8 +22,16 @@ public class BrickArray {
         }
     }
 
+    public void removeBrick(int i, int j) {
+        brickArray[i][j] = null;
+    }
+
     public int getLength() {
         return brickArray.length;
+    }
+
+    public int getWidth(int col) {
+        return brickArray[col].length;
     }
 
     public Brick getBrick(int i, int j) {

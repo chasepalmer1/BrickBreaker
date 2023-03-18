@@ -14,7 +14,8 @@ public class Panel extends JPanel {
 	private int score = 0;
 	
 	BrickArray brickArray1 = new BrickArray();
-	private Paddle paddle = new Paddle();
+	Paddle paddle = new Paddle();
+	Ball ball = new Ball();
 	
 	public Panel() {
 		addKeyListener(new KeyboardInputs(this, paddle));
@@ -33,18 +34,32 @@ public class Panel extends JPanel {
 		//This "cleans" the surface, making painting our own objects smoother.
 		super.paintComponent(g);
 		
-		g.setColor(Color.gray);
 		paddle.spawn(g);
 
 		brickArray1.spawnBricks(g);
 
-		g.setColor(Color.BLUE);
-		g.fillOval(500, 360, 20, 20);
+		ball.spawnBall(g);
 
 		g.setColor(Color.WHITE);
 		g.setFont(new Font ("Monospaced Bold",1,20));
 		g.drawString("Score: " + score, 20, 20);
 
+	}
+
+	//HELPER METHOD FOR CHECK BRICK COLLISION.  Only used for readability
+	private Brick getBrickAt(int i, int j) {
+		return brickArray1.getBrick(i,j);
+	}
+
+	public void checkBrickCollision() {
+		for(int i = 0; i < brickArray1.getLength(); i++) {
+			for (int j = 0; j < brickArray1.getWidth(i); j++) {
+				if ((getBrickAt(i,j) != null) && ball.intersects(getBrickAt(i,j))) {
+					brickArray1.removeBrick(i,j);
+					setScore(getScore() + 5);
+				}
+			}
+		}
 	}
 
 }
