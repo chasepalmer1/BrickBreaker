@@ -10,6 +10,7 @@ import java.awt.*;
 public class BrickArray {
     
     private Brick[][] brickArray = new Brick[5][10];
+    private int numBricks;
 
     public BrickArray() {
 		for (int i = 0; i < brickArray.length; i++) {
@@ -20,10 +21,13 @@ public class BrickArray {
                     brickX += 96;
 			    }
         }
+        numBricks = 50;
     }
 
     public void removeBrick(int i, int j) {
         brickArray[i][j] = null;
+        numBricks--;
+
     }
 
     public int getLength() {
@@ -36,6 +40,10 @@ public class BrickArray {
 
     public Brick getBrick(int i, int j) {
         return brickArray[i][j];
+    }
+
+    public int getNumBricks() {
+        return numBricks;
     }
 
     public void spawnBricks(Graphics g) {
