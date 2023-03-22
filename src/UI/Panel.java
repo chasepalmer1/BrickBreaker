@@ -57,9 +57,15 @@ public class Panel extends JPanel {
 				if ((getBrickAt(i,j) != null) && ball.intersects(getBrickAt(i,j))) {
 					brickArray1.removeBrick(i,j);
 					setScore(getScore() + 5);
+					ball.setXSpeed(ball.getXSpeed() * -1);
+					ball.setYSpeed(ball.getYSpeed() * -1);
 				}
 			}
 		}
+	}
+
+	public void moveBallPanel() {
+		ball.moveBall();
 	}
 
 }
