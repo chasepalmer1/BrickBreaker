@@ -26,10 +26,12 @@ public class Paddle extends Rectangle {
 		left = false;
 	}
 	
+	
 	public void draw(Graphics g) {
 		g.setColor(myGray);
 		g.fillRect(xPos, yPos, width, height);
 	}
+
 	
 	public void updatePos() {
 		if(left && !right) {
