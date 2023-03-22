@@ -12,6 +12,8 @@ public class Ball extends Ellipse2D {
     private int y;
     private int width;
     private int height;
+    private int xSpeed = 1;
+    private int ySpeed = -1;
 
     public Ball() {
         x = 500;
@@ -23,6 +25,39 @@ public class Ball extends Ellipse2D {
     public void spawnBall(Graphics g) {
         g.setColor(Color.BLUE);
         g.fillOval(x, y, width, height);
+    }
+
+    public void moveBall() {
+        x += xSpeed;
+        y += ySpeed;
+        if (x < 0) {
+            xSpeed = xSpeed * -1;
+        }
+        if (y < 0) {
+            ySpeed = ySpeed * -1;
+        }
+        if (y > 720) {
+            ySpeed = ySpeed * -1;
+        }
+        if (x > 1000) {
+            xSpeed = xSpeed * -1;
+        }
+    }
+
+    public int getXSpeed() {
+        return xSpeed;
+    }
+
+    public int getYSpeed() {
+        return ySpeed;
+    }
+
+    public void setXSpeed(int xSpeed) {
+        this.xSpeed = xSpeed;
+    }
+
+    public void setYSpeed(int ySpeed) {
+        this.ySpeed = ySpeed;
     }
 
     @Override
