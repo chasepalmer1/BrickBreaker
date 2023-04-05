@@ -14,8 +14,8 @@ public class Ball extends Ellipse2D {
     private int height;
 
     public Ball() {
-        x = 500;
-        y = 360;
+        x = 20;
+        y = 30;
         width = 20;
         height = 20;
     }

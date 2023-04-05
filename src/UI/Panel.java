@@ -35,8 +35,9 @@ public class Panel extends JPanel {
 	}
 
 	public void update() {
-		paddle.updatePos();		
+		paddle.updatePos();
 	}
+
 	
 	public void paintComponent(Graphics g) {
 		//This "cleans" the surface, making painting our own objects smoother.

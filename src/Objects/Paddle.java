@@ -39,6 +39,12 @@ public class Paddle extends Rectangle {
 		} else if (right && !left) {
 			xPos += 2.0f;
 		}
+		
+		if(xPos < 0) {
+			xPos = 0;
+		} else if (xPos > 850) {
+			xPos = 850;
+		}
 	}
 
 
