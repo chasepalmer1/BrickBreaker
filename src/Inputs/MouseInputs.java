@@ -48,13 +48,11 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		paddle.setXPosition(e.getX());
 		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		paddle.setXPosition(e.getX());
 		
 	}
 	
