@@ -30,16 +30,20 @@ public class Ball extends Ellipse2D {
     public void moveBall() {
         x += xSpeed;
         y += ySpeed;
-        if (x < 0) {
+        if (x <= 0) {
+            x = 0;
             xSpeed = xSpeed * -1;
         }
-        if (y < 0) {
+        if (y <= 0) {
+            y = 0;
             ySpeed = ySpeed * -1;
         }
-        if (y > 670) {
+        if (y >= 670) {
+            y = 670;
             ySpeed = ySpeed * -1;
         }
-        if (x > 975) {
+        if (x >= 975) {
+            x = 975;
             xSpeed = xSpeed * -1;
         }
     }
