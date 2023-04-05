@@ -4,6 +4,8 @@ public class Game implements Runnable {
 	
 	private Frame gameFrame;
 	private Panel gamePanel;
+	// private Panel startPanel;
+	// private Panel endPanel;
 
 	//The video I watched described threads as opening another lane on a highway to help with traffic.
 	//So, the computer isn't running everything on the same thread, which helps it run smoother.
@@ -22,16 +24,34 @@ public class Game implements Runnable {
 	
 	public Game() {
 		gamePanel = new Panel();
+		// startPanel = new Panel();
+		// endPanel = new Panel();
+		// gameFrame = new Frame(startPanel);
 	    gameFrame = new Frame(gamePanel);
-	          
+	    start();
+		
 	    //According to the video I watched, this line is to direct your keyboard and mouse inputs to the Game Panel. Without it,
 	    //your input won't do anything on the screen.
 	    gamePanel.requestFocus();
 	      
 	    startGameLoop();
+
+		end();
+	}
+
+	private void end() {
+		//gameFrame.setContentPane(endPanel);
+	}
+
+	private void start() {
+		/*
+		 * while (startPanel.gameStart == true) {
+		 * }
+		 */
 	}
 	
 	private void startGameLoop() {
+		gameFrame.setContentPane(gamePanel);
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
