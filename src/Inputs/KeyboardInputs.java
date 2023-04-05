@@ -9,12 +9,17 @@ import Objects.Paddle;
 
 public class KeyboardInputs implements KeyListener {
 	
+	private StartUpPanel startUp;
 	private Panel gamePanel;
 	private Paddle paddle;
 	
 	public KeyboardInputs (Panel gamePanel, Paddle paddle) {
 		this.gamePanel = gamePanel;
 		this.paddle = paddle;
+	}
+
+	public KeyboardInputs (StartUpPanel startUp) {
+		this.startUp = startUp;
 	}
 
 	@Override
@@ -40,8 +45,6 @@ public class KeyboardInputs implements KeyListener {
 			paddle.keyInputSetXPos(-20);
 			break;
 		}
-			
-		
 	}
 
 	@Override
