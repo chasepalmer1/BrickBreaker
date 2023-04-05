@@ -9,6 +9,7 @@ import Inputs.MouseInputs;
 
 public class Panel extends JPanel {
 
+
 	public int score = 0;
 	
 	BrickArray brickArray1 = new BrickArray();
@@ -35,7 +36,10 @@ public class Panel extends JPanel {
 	}
 
 	public void update() {
-		paddle.updatePos();		
+		paddle.updatePos();	
+		ball.moveBall();	
+		checkBrickCollision();
+		checkPaddleCollision();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -60,20 +64,34 @@ public class Panel extends JPanel {
 	}
 
 	public void checkBrickCollision() {
+		int numHit= 0;
 		for(int i = 0; i < brickArray1.getLength(); i++) {
 			for (int j = 0; j < brickArray1.getWidth(i); j++) {
 				if ((getBrickAt(i,j) != null) && ball.intersects(getBrickAt(i,j))) {
+					numHit++;
+					if (numHit < 2) {
+						if (ball.intersects(getBrickAt(i,j).getX() + 2, getBrickAt(i,j).getY(), getBrickAt(i,j).getWidth() - 4, getBrickAt(i, j).getHeight())) {
+							ball.setYSpeed(ball.getYSpeed() * -1);
+						} else if (ball.intersects(getBrickAt(i,j).getX(), getBrickAt(i,j).getY(), 2, getBrickAt(i,j).getHeight())) {
+							ball.setXSpeed(ball.getXSpeed() * -1);
+						} else if (ball.intersects(getBrickAt(i,j).getX() + getBrickAt(i,j).getWidth() - 1, getBrickAt(i,j).getY(), 2, getBrickAt(i,j).getHeight())) {
+							ball.setXSpeed(ball.getXSpeed() * -1);
+						}
+					}
 					brickArray1.removeBrick(i,j);
 					setScore(getScore() + 5);
-					ball.setXSpeed(ball.getXSpeed() * -1);
-					ball.setYSpeed(ball.getYSpeed() * -1);
 				}
 			}
 		}
 	}
 
-	public void moveBallPanel() {
-		ball.moveBall();
+	public void checkPaddleCollision() {
+		if (ball.intersects(paddle.getXPos() + 3, paddle.getYPos(),paddle.getTheWidth() - 6,10)) {
+			ball.setYSpeed(Math.abs(ball.getYSpeed()) * -1);
+		} else if (ball.intersects(paddle.getXPos(),paddle.getYPos(), 3, paddle.getTheHeight())) {
+			ball.setXSpeed(ball.getXSpeed() * -1);
+		} else if (ball.intersects(paddle.getXPos() + paddle.getTheWidth() - 1,paddle.getYPos(), 3, paddle.getTheHeight())) {
+			ball.setXSpeed(ball.getXSpeed() * -1);
+		}
 	}
-
 }

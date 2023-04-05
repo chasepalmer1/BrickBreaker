@@ -62,9 +62,6 @@ public class Game implements Runnable {
 				lastFrame = now;
 				frames++;
 			}
-
-			gamePanel.checkBrickCollision();
-
 			
 			if((now - lastUpdate) >= timePerUpdate) {
 				gamePanel.update();

@@ -18,7 +18,7 @@ public class Paddle extends Rectangle {
 	public static final int RIGHT = 1;
 	
 	public Paddle() {
-		xPos = 100;
+		xPos = 500;
 		yPos = 650;
 		width = 150;
 		height = 30;
@@ -26,6 +26,21 @@ public class Paddle extends Rectangle {
 		left = false;
 	}
 	
+	public int getXPos() {
+		return xPos;
+	}
+
+	public int getYPos() {
+		return yPos;
+	}
+
+	public int getTheWidth() {
+		return width;
+	}
+
+	public int getTheHeight() {
+		return height;
+	}
 	
 	public void draw(Graphics g) {
 		g.setColor(myGray);
@@ -35,9 +50,9 @@ public class Paddle extends Rectangle {
 	
 	public void updatePos() {
 		if(left && !right) {
-			xPos -= 2.0f;
+			xPos -= 3.0f;
 		} else if (right && !left) {
-			xPos += 2.0f;
+			xPos += 3.0f;
 		}
 	}
 
