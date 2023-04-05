@@ -41,6 +41,7 @@ public class Panel extends JPanel {
 		checkBrickCollision();
 		checkPaddleCollision();
 	}
+
 	
 	public void paintComponent(Graphics g) {
 		//This "cleans" the surface, making painting our own objects smoother.
