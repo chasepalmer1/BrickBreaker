@@ -8,10 +8,15 @@ import UI.*;
 
 public class KeyboardInputs implements KeyListener {
 	
+	private StartUpPanel startUp;
 	private Panel gamePanel;
 	
 	public KeyboardInputs (Panel gamePanel) {
 		this.gamePanel = gamePanel;
+	}
+
+	public KeyboardInputs (StartUpPanel startUp) {
+		this.startUp = startUp;
 	}
 
 	@Override
@@ -37,8 +42,6 @@ public class KeyboardInputs implements KeyListener {
 				gamePanel.getPaddle().setRight(true);
 				break;
 		}
-			
-		
 	}
 
 	@Override
