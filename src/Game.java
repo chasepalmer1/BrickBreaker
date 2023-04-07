@@ -1,11 +1,14 @@
+import java.awt.desktop.SystemSleepListener;
+import Objects.Ball;
 import UI.*;
+import test.GameFrame;
 
 public class Game implements Runnable {
 	
 	private Frame gameFrame;
 	private Panel gamePanel;
-	// private Panel startPanel;
-	// private Panel endPanel;
+	private StartUpPanel startPanel;
+	private GameOverPanel endPanel;
 
 	//The video I watched described threads as opening another lane on a highway to help with traffic.
 	//So, the computer isn't running everything on the same thread, which helps it run smoother.
@@ -23,36 +26,46 @@ public class Game implements Runnable {
 	private long lastCheck = 0;
 	
 	public Game() {
+		startPanel = new StartUpPanel();
+		endPanel = new GameOverPanel();
 		gamePanel = new Panel();
-		// startPanel = new Panel();
-		// endPanel = new Panel();
-		// gameFrame = new Frame(startPanel);
-	    gameFrame = new Frame(gamePanel);
-	    start();
-		
-	    //According to the video I watched, this line is to direct your keyboard and mouse inputs to the Game Panel. Without it,
-	    //your input won't do anything on the screen.
-	    gamePanel.requestFocus();
-	      
-	    startGameLoop();
-
-		end();
+	    gameFrame = new Frame(startPanel, gamePanel, endPanel);
+	    startPanel.requestFocus();
+		start();
 	}
 
 	private void end() {
-		//gameFrame.setContentPane(endPanel);
+		gameFrame.endGame();
+		endPanel.requestFocus();
+		long last = System.currentTimeMillis();
+		while(!endPanel.getGameStart()) {
+			if (System.currentTimeMillis() - last >= 1000) {
+				last = System.currentTimeMillis();
+				System.out.println("Check");
+			}
+		}
+		gameFrame.dispose();
+		Tester.setNewGame(true);
 	}
 
 	private void start() {
-		/*
-		 * while (startPanel.gameStart == true) {
-		 * }
-		 */
+		long last = System.currentTimeMillis();
+		while (!startPanel.getGameStart()) {
+			if (System.currentTimeMillis() - last >= 1000) {
+				last = System.currentTimeMillis();
+				System.out.println("Check");
+			}
+		}
+		startGameLoop();
 	}
 	
 	private void startGameLoop() {
-		gameFrame.setContentPane(gamePanel);
+		gameFrame.startGame();
+		//According to the video I watched, this line is to direct your keyboard and mouse inputs to the Game Panel. Without it,
+	    //your input won't do anything on the screen.
+		gamePanel.requestFocus();
 		gameThread = new Thread(this);
+		gameThread.setDaemon(true);
 		gameThread.start();
 	}
 	
@@ -65,7 +78,7 @@ public class Game implements Runnable {
 		long lastUpdate = System.nanoTime();
 		long now = System.nanoTime();
 		
-		while(true) {
+		while(!gamePanel.getGameOver()) {
 			now = System.nanoTime();
 			
 			if (System.currentTimeMillis() - lastCheck >= 1000) {
@@ -90,6 +103,8 @@ public class Game implements Runnable {
 			}
 
 		}
+
+		end();
 		
 	}
 	

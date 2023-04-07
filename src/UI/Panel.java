@@ -9,6 +9,7 @@ import Inputs.MouseInputs;
 
 public class Panel extends JPanel {
 
+	boolean gameOver = false;
 
 	public int score = 0;
 	
@@ -36,10 +37,11 @@ public class Panel extends JPanel {
 	}
 
 	public void update() {
-		paddle.updatePos();	
-		ball.moveBall();	
 		checkBrickCollision();
 		checkPaddleCollision();
+		checkBallCollision();
+		paddle.updatePos();	
+		ball.moveBall();	
 	}
 
 	
@@ -62,6 +64,16 @@ public class Panel extends JPanel {
 	//HELPER METHOD FOR CHECK BRICK COLLISION.  Only used for readability
 	private Brick getBrickAt(int i, int j) {
 		return brickArray1.getBrick(i,j);
+	}
+
+	public void checkBallCollision() {
+		if (ball.getY() >= 670 || score == 250) {
+			gameOver = true;
+		}
+	}
+
+	public boolean getGameOver() {
+		return gameOver;
 	}
 
 	public void checkBrickCollision() {

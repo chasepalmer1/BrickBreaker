@@ -38,10 +38,6 @@ public class Ball extends Ellipse2D {
             y = 0;
             ySpeed = ySpeed * -1;
         }
-        if (y >= 670) {
-            y = 670;
-            ySpeed = ySpeed * -1;
-        }
         if (x >= 975) {
             x = 975;
             xSpeed = xSpeed * -1;

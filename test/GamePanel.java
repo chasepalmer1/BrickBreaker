@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyListener;
 import java.util.*;
+import Inputs.KeyboardInputs;
+import Inputs.MouseInputs;
 
 import javax.swing.JPanel;
 
@@ -13,11 +15,11 @@ public class GamePanel extends JPanel {
 	private int yPos = 630;
 	
 	
-	public GamePanel() {
+	/*public GamePanel() {
 		addKeyListener(new KeyboardInputs(this));
 		addMouseListener(new MouseInputs(this));
 		addMouseMotionListener(new MouseInputs(this));
-	}
+	}*/
 	
 	public void keyInputSetXPos(int changeInX) {
 		if(xPos >= 0 && xPos <= 785) {

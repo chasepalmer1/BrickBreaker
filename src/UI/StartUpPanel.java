@@ -9,29 +9,34 @@ import javax.swing.JPanel;
 import Inputs.KeyboardInputs;
 import Inputs.MouseInputs;
 import java.awt.event.KeyEvent;
-
+import Objects.Paddle;
+import Objects.BrickArray;
 
 public class StartUpPanel extends JPanel {
 
-    static boolean gameStart = false;
+    BrickArray brickArray = new BrickArray();
+    Paddle paddle = new Paddle();
+    boolean gameStart = false;
 
     public StartUpPanel() {
         addKeyListener(new KeyboardInputs(this));
         setBackground(Color.BLACK);    
-
     } //StartUpPanel
 
     public void startGameKey(KeyEvent e) {
         switch (e.getKeyCode()) {
-        case KeyEvent.VK_ENTER:
-            gameStart = true;
-            break;
+            case KeyEvent.VK_ENTER:
+                gameStart = true;
+                break;
         }
-    
-    } //startGameKey
+    }
 
     public boolean getGameStart() {
         return gameStart; 
+    }
+
+    public void setGameStart(boolean b) {
+        gameStart = b;
     }
 
     public void paintComponent(Graphics g) {
@@ -68,6 +73,9 @@ public class StartUpPanel extends JPanel {
             g.setColor(Color.yellow);
             g.setFont(new Font ("Arial", 1, 25));
             g.drawString("Press Enter to Start", 375, 475);
+
+            brickArray.spawnBricks(g);
+            paddle.draw(g);
         }
         
     } //painComponent
