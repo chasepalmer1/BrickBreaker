@@ -39,10 +39,22 @@ public class Game implements Runnable {
 		gameFrame.endGame();
 		endPanel.requestFocus();
 		long last = System.currentTimeMillis();
+
+		long now = System.nanoTime();
+		long lastOpacityUpdate = System.nanoTime();
+
 		while(!endPanel.getGameStart()) {
+			now = System.nanoTime();
+
 			if (System.currentTimeMillis() - last >= 1000) {
 				last = System.currentTimeMillis();
 				System.out.println("Check");
+			}
+
+			if(now - lastOpacityUpdate >= OPACITY_UPDATE) {
+				lastOpacityUpdate = now;
+				endPanel.updateOpacity();
+				endPanel.repaint();
 			}
 		}
 		gameFrame.dispose();

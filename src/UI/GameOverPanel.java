@@ -14,6 +14,9 @@ public class GameOverPanel extends JPanel{
 
     boolean gameStart = false;
 
+    private float opacity = 150;
+    private float opacityUpdate = 0.000022f;
+
     public GameOverPanel() {
         addKeyListener(new KeyboardInputs(this));
         setBackground(Color.BLACK);  
@@ -69,6 +72,21 @@ public class GameOverPanel extends JPanel{
         }*/
         g.setColor(Color.yellow);
         g.setFont(new Font ("Arial", 1, 25));
+
+        g.setColor(new Color(Color.yellow.getRed(), Color.yellow.getGreen(), Color.yellow.getBlue(), (int)(opacity)));
         g.drawString("Press Enter to Start", 375, 475);
-    }    
+    }
+
+
+    public void updateOpacity() {
+        if (opacity < 0) {
+            opacity = 0;
+            opacityUpdate *= -1;
+        } else if (opacity > 150) {
+            opacity = 150;
+            opacityUpdate *= -1;
+        }
+
+        opacity -= opacityUpdate;
+    }
 }
