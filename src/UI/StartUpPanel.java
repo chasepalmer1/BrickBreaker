@@ -18,8 +18,8 @@ public class StartUpPanel extends JPanel {
     Paddle paddle = new Paddle();
     boolean gameStart = false;
 
-    private float opacity = 69;
-    private float opacityUpdate = 0.01f;
+    private float opacity = 68;
+    private float opacityUpdate = 0.0000088f;
 
     public StartUpPanel() {
         addKeyListener(new KeyboardInputs(this));
@@ -38,8 +38,9 @@ public class StartUpPanel extends JPanel {
         if (opacity < 0) {
             opacity = 0;
             opacityUpdate *= -1;
-        } else if (opacity > 69) {
-            opacity = 69;
+        } else if (opacity > 68) {
+            System.out.println("Updated Opacity");
+            opacity = 68;
             opacityUpdate *= -1;
         }
 
