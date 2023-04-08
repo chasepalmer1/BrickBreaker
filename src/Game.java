@@ -17,6 +17,7 @@ public class Game implements Runnable {
 	//The desired number of frames per second.
 	private final int FPS_SET = 120;
 	private final int UPS_SET = 200;
+	private final int OPACITY_UPDATE = 200;
 
 	//Counting the number of frames.
 	private int frames = 0;
@@ -50,10 +51,21 @@ public class Game implements Runnable {
 
 	private void start() {
 		long last = System.currentTimeMillis();
+		long now = System.nanoTime();
+		long lastOpacityUpdate = System.nanoTime();
+
 		while (!startPanel.getGameStart()) {
+			now = System.nanoTime();
+
 			if (System.currentTimeMillis() - last >= 1000) {
 				last = System.currentTimeMillis();
 				System.out.println("Check");
+			}
+
+			if(now - lastOpacityUpdate >= OPACITY_UPDATE) {
+				lastOpacityUpdate = now;
+				startPanel.updateOpacity();
+				startPanel.repaint();
 			}
 		}
 		startGameLoop();

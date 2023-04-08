@@ -18,6 +18,9 @@ public class StartUpPanel extends JPanel {
     Paddle paddle = new Paddle();
     boolean gameStart = false;
 
+    private float opacity = 69;
+    private float opacityUpdate = 0.01f;
+
     public StartUpPanel() {
         addKeyListener(new KeyboardInputs(this));
         setBackground(Color.BLACK);    
@@ -29,6 +32,18 @@ public class StartUpPanel extends JPanel {
                 gameStart = true;
                 break;
         }
+    }
+
+    public void updateOpacity() {
+        if (opacity < 0) {
+            opacity = 0;
+            opacityUpdate *= -1;
+        } else if (opacity > 69) {
+            opacity = 69;
+            opacityUpdate *= -1;
+        }
+
+        opacity -= opacityUpdate;
     }
 
     public boolean getGameStart() {
@@ -72,6 +87,8 @@ public class StartUpPanel extends JPanel {
             }
             g.setColor(Color.yellow);
             g.setFont(new Font ("Arial", 1, 25));
+
+            g.setColor(new Color(Color.yellow.getRed(), Color.yellow.getGreen(), Color.yellow.getBlue(), (int)(opacity)));
             g.drawString("Press Enter to Start", 375, 475);
 
             brickArray.spawnBricks(g);
