@@ -12,15 +12,23 @@ import java.awt.event.KeyEvent;
 
 public class GameOverPanel extends JPanel{
 
+    static int titleX = 105;
     boolean gameStart = false;
+    static String title;
 
     private float opacity = 150;
     private float opacityUpdate = 0.000022f;
 
     public GameOverPanel() {
         addKeyListener(new KeyboardInputs(this));
-        setBackground(Color.BLACK);  
+        setBackground(Color.BLACK); 
+        title = "GAME OVER";
     } //StartUpPanel
+
+    static void setTitleWin() {
+        title = "You Win!";
+        titleX = 210;
+    } 
 
     public void startGameKey(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -36,12 +44,11 @@ public class GameOverPanel extends JPanel{
   
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g); 
-        String title = "GAME OVER";
+        super.paintComponent(g);
         boolean foundI = false;
         g.setColor(Color.gray);
         g.setFont(new Font ("Monospaced Bold",1,125));
-        g.drawString(title,105,375);
+        g.drawString(title,titleX,375);
         /*for (int i = 0; i < title.length(); i++) {
             String lastLetter = "";
             if (i != 0) {

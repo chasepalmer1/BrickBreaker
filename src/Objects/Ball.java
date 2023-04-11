@@ -12,7 +12,7 @@ public class Ball extends Ellipse2D {
     private int y;
     private int width;
     private int height;
-    private int xSpeed = 2 * (int)Math.pow(-1, Math.ceil(Math.random() * 2));   // 2
+    private int xSpeed =2 * (int)Math.pow(-1, Math.ceil(Math.random() * 2));   // 2
     private int ySpeed = -2; // -2
 
     public Ball() {

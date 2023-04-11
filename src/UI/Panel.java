@@ -11,7 +11,7 @@ public class Panel extends JPanel {
 
 	boolean gameOver = false;
 
-	public int score = 0;
+	public int score = 250;
 	
 	BrickArray brickArray1 = new BrickArray();
 	Paddle paddle = new Paddle();
@@ -67,8 +67,12 @@ public class Panel extends JPanel {
 	}
 
 	public void checkBallCollision() {
-		if (ball.getY() >= 670 || score == 250) {
+		if (ball.getY() >= 670) {
 			gameOver = true;
+		}
+		if (score == 250) {
+			gameOver = true;
+			GameOverPanel.setTitleWin();
 		}
 	}
 
