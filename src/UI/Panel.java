@@ -11,7 +11,7 @@ public class Panel extends JPanel {
 
 	boolean gameOver = false;
 
-	public int score = 250;
+	public int score = 0;
 	
 	BrickArray brickArray1 = new BrickArray();
 	Paddle paddle = new Paddle();
