@@ -19,11 +19,13 @@ public class Tester {
     }
 
     public static void setNewGame(boolean b) {
+        System.out.println("hello");
         newGame = b;
     }
 
     public static boolean runGame() {
         Game game = new Game();
+        System.out.println("run game success");
         return true;
     }
 

@@ -58,7 +58,7 @@ public class Game implements Runnable {
 			}
 		}
 		gameFrame.dispose();
-		Tester.setNewGame(true);
+		Driver.setNewGame(true);
 	}
 
 	private void start() {

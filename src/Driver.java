@@ -1,13 +1,17 @@
+import UI.Frame;
+import UI.Panel;
+import Objects.*;
+import java.awt.Graphics;
+
 public class Driver {
         
     static boolean newGame = false;
-    
     public static void main(String[] args) {
         
         runGame();
 
         while (true) {
-            while (newGame) {
+            if (newGame) {
                 runGame();
                 setNewGame(false);
             }
@@ -15,12 +19,13 @@ public class Driver {
     }
 
     public static void setNewGame(boolean b) {
+        System.out.println("hello");
         newGame = b;
     }
 
-    public static boolean runGame() {
+    public static void runGame() {
         Game game = new Game();
-        return true;
+        System.out.println("run game success");
     }
 
-    }
+}
